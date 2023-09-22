@@ -1,0 +1,15 @@
+.Sidebar {
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 20px;
+
+    box-sizing: border-box;
+    padding: 20px;
+
+    border-right: 1px solid var(--bg-ui-secondary-color);
+}

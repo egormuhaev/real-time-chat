@@ -1,0 +1,35 @@
+.Button {
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background-color: var(--bg-ui-primary-color);
+    color: white;
+
+    outline: none;
+    border: 1px solid var(--bg-ui-secondary-color);
+
+    font-size: 17px;
+    font-weight: 500;
+
+    border-radius: 6px;
+}
+
+.small {
+    height: 30px;
+    min-width: 61px;
+} 
+
+.medium {
+    height: 36px;
+    min-width: 75px;
+} 
+
+.large {
+    height: 42px;
+    min-width: 91px;
+}

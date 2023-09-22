@@ -1,0 +1,55 @@
+.SidebarNavItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+
+    gap: 20px;
+
+    height: 36px;
+    width: 100%;
+
+    border-radius: 6px;
+
+    box-sizing: border-box;
+    padding: 20px;
+    text-decoration: none;
+}
+
+
+svg {
+    height: 26px;
+    width:  26px;
+    fill: var(--bg-ui-secondary-color);
+}
+
+.title {
+    text-decoration: none;
+    color: var(--bg-ui-secondary-color);
+}
+
+.active  .title  {
+    color: var(--bg-ui-primary-color);
+}
+
+.active >  svg  {
+    fill: var(--bg-ui-primary-color);
+    
+}
+
+.active {
+    background-color: var(--primary-color);
+    outline: none;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .SidebarNavItem{
+        justify-content: center;
+    }
+
+    .title {
+        display: none;
+    }
+}

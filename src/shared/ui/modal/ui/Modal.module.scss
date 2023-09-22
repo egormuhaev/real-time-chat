@@ -1,0 +1,56 @@
+:root {
+    --bg-ui-primary-color-opacity: #1e253060;
+}
+
+.Modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.content {
+    padding: 20px;
+    border-radius: 7px;
+    background-color: var(--bg-ui-primary-color-opacity);
+
+    height: auto;
+    max-width: 90%;
+
+    transition: 0.3s transform;
+    transform: scale(0.5);
+}
+
+.opened {
+    pointer-events: auto;
+    opacity: 1;
+
+    .content {
+        transform: scale(1);
+    }
+
+    z-index: var(--modal-z-index);
+}
+
+
+.isClosing {
+    .content {
+        transform: scale(0.2);
+    }
+}
