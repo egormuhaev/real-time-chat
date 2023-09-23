@@ -4,14 +4,13 @@ import { SidebarProps } from "../../types/Sidebar.props";
 import { SidebarNavItem } from "../SidebarNavItem/SidebarNavItem";
 import { routerConfig } from "shared/config/routerConfig/routerConfig";
 import { MdInventory, MdInfo } from "react-icons/md";
-import { useLocation } from "react-router-dom";
-import { SidebarProfile } from "../SidebarProfile/SidebarProfile";
+import { useLocation } from "react-router";
 
 export const Sidebar: React.FC<SidebarProps> = ({ className, ...props }) => {
   const location = useLocation();
 
   return (
-    <div className={cn(className, styles.Sidebar)} {...props}>
+    <div id="sidebar" className={cn(className, styles.Sidebar)} {...props}>
       <SidebarNavItem
         icon={<MdInventory />}
         title="Главная"
@@ -23,11 +22,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, ...props }) => {
         title="О сайте"
         url={routerConfig.about.path}
         active={routerConfig.about.path === location.pathname}
-      />
-      <SidebarProfile
-        firstName="Egor"
-        lastName="Muhaev"
-        login="egormuhaev@yandex.ru"
       />
     </div>
   );

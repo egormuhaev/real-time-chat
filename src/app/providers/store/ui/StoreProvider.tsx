@@ -8,10 +8,7 @@ interface StoreProviderProps {
   initialState?: StateSchema;
 }
 
-export const StoreProvider: React.FC<StoreProviderProps> = ({
-  children,
-  initialState,
-}) => {
+export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
   const store = useMemo(() => createReduxStore(), []);
   return <Provider store={store}>{children}</Provider>;
 };
