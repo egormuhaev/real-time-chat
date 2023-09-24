@@ -7,7 +7,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 5px;
+    
     width: 100%;
     background-color: var(--bg-ui-primary-color);
 }
@@ -24,6 +24,10 @@
         outline: none;
         border: none;
     }
+}
+
+::placeholder {
+    color: var(--bg-ui-secondary-color);
 }
 
 .label {
@@ -71,6 +75,11 @@
 
     .label {
         width: 60px;
+
+        svg {
+            height: 25px;
+            width: 25px;
+        }
     }
 
 } 
@@ -80,6 +89,11 @@
 
     .label {
         width: 70px;
+
+        svg {
+            height: 27px;
+            width: 27px;
+        }
     }
 
 } 
@@ -89,6 +103,11 @@
 
     .label {
         width: 80px;
+
+        svg {
+            height: 30px;
+            width: 30px;
+        }
     }
 
 }
