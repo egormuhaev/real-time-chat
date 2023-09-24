@@ -7,4 +7,7 @@ const AboutPage: React.FC = () => {
   return <div className={styles.AboutPage}>Aboute page</div>;
 };
 
-export default withMainLayout(AboutPage, <Header />, <Sidebar />);
+export default withMainLayout(AboutPage, {
+  sidebar: <Sidebar />,
+  header: <Header />,
+});

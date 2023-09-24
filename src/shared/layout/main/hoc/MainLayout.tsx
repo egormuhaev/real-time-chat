@@ -3,16 +3,19 @@ import cn from "classnames";
 import { Header } from "widgets/header";
 import { Sidebar } from "widgets/sidebar";
 
+export interface LayoutComponents {
+  sidebar?: React.ReactNode;
+  header?: React.ReactNode;
+}
+
 export interface MainLayoutProps {
   children: React.ReactNode;
-  sidebar: React.ReactNode;
-  header: React.ReactNode;
+  componennst?: LayoutComponents;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({
   children,
-  sidebar,
-  header,
+  componennst: { sidebar, header },
 }) => {
   return (
     <div className={cn(styles.layout)}>
@@ -25,12 +28,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({
 
 export const withMainLayout = <T extends Record<string, unknown>>(
   Component: React.FunctionComponent<T>,
-  sidebar: React.ReactNode,
-  header: React.ReactNode
+  components: LayoutComponents
 ) => {
   return function withLayoutComponent(props: T): JSX.Element {
     return (
-      <MainLayout sidebar={sidebar} header={header}>
+      <MainLayout componennst={components}>
         <Component {...props} />
       </MainLayout>
     );

@@ -14,4 +14,7 @@ const HomePage = () => {
   );
 };
 
-export default withMainLayout(HomePage, <Sidebar />, <Header />);
+export default withMainLayout(HomePage, {
+  sidebar: <Sidebar />,
+  header: <Header />,
+});
