@@ -8,12 +8,8 @@ import { useState } from "react";
 export const SignInForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  
-  const { t, i18n } = useTranslation();
 
-  const toggle = async () => {
-    i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
-  };
+  const { t, i18n } = useTranslation();
 
   return (
     <div className={styles.form}>
@@ -30,11 +26,8 @@ export const SignInForm = () => {
         label={<MdPassword />}
       />
 
-      <Button className={styles.loginBtn} size="large">
+      <Button appearence="blue" className={styles.loginBtn} size="large">
         {t("Войти")}
-      </Button>
-      <Button className={styles.loginBtn} size="large" onClick={toggle}>
-        lang
       </Button>
     </div>
   );

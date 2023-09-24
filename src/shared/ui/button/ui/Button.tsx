@@ -4,9 +4,21 @@ import styles from "./Button.module.scss";
 import { memo } from "react";
 
 export const Button: React.FC<ButtonProps> = memo(
-  ({ children, size = "string", icon, className, ...props }): JSX.Element => {
+  ({
+    children,
+    appearence = "appearence",
+    size = "string",
+    icon,
+    className,
+    ...props
+  }): JSX.Element => {
     return (
-      <button className={cn(className, styles.Button, styles[size])} {...props}>
+      <button
+        className={cn(className, styles.Button, styles[size], {
+          [styles.blue]: appearence === "blue",
+        })}
+        {...props}
+      >
         {icon}
         {children}
       </button>
