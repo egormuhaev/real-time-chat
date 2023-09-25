@@ -4,8 +4,9 @@ import styles from "./SignInFrom.module.scss";
 import { MdAlternateEmail, MdPassword } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { FormProps } from "../types/FormProps";
 
-export const SignInForm = () => {
+export const SignInForm: React.FC<FormProps> = ({ switchForm }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -29,6 +30,10 @@ export const SignInForm = () => {
       <Button appearence="blue" className={styles.loginBtn} size="large">
         {t("Войти")}
       </Button>
+      <p onClick={switchForm}>
+        <span>{t("Создать ")}</span>
+        {t("новую учетную запись")}
+      </p>
     </div>
   );
 };

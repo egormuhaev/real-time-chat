@@ -5,14 +5,16 @@ import { MdAlternateEmail, MdPassword } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { BiUser } from "react-icons/bi";
+import { FormProps } from "../types/FormProps";
 
-export const SignUpForm = () => {
+export const SignUpForm: React.FC<FormProps> = ({ switchForm }) => {
+  const { t, i18n } = useTranslation();
+
   const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-  const { t, i18n } = useTranslation();
   return (
     <div className={styles.form}>
       <h1 className={styles.formTitle}>{t("Регистрация")}</h1>
@@ -42,6 +44,10 @@ export const SignUpForm = () => {
       <Button appearence="blue" className={styles.loginBtn} size="large">
         {t("Зарегистрироваться")}
       </Button>
+      <p onClick={switchForm}>
+        {t("Уже есть аккаунт ")}
+        <span>{t("войти")}</span>
+      </p>
     </div>
   );
 };

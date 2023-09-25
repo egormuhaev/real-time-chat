@@ -8,7 +8,7 @@
 
 
     width: 600px;
-    height: 400px;
+    height: 500px;
 
     background-color: var(--bg-color);
 
@@ -16,6 +16,15 @@
 
     padding: 20px;
     box-sizing: border-box;
+
+    p {
+        font-size: 10px;
+
+        span {
+            font-size: 10px;
+            color: var(--blue-color);
+        }
+    }
 }
 
 .formTitle {

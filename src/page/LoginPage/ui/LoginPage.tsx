@@ -1,13 +1,21 @@
 import { SignInForm, SignUpForm } from "features/AuthByLogin";
 import styles from "./LoginPage.module.scss";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const LoginPage = () => {
   const [isAuth, setIsAuth] = useState(false);
 
+  const switchForm = useCallback(() => {
+    setIsAuth(!isAuth);
+  }, [isAuth]);
+
   return (
     <div className={styles.LoginPage}>
-      {isAuth ? <SignInForm /> : <SignUpForm />}
+      {isAuth ? (
+        <SignInForm switchForm={switchForm} />
+      ) : (
+        <SignUpForm switchForm={switchForm} />
+      )}
     </div>
   );
 };
