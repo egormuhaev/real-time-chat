@@ -5,4 +5,14 @@ design
 /storybook-static
 .loki/report.html
 .loki/report.json
-.env
+
+
+# misc
+.DS_Store
+.env.local
+.env.development
+.env.development.local
+.env.test.local
+.env.production.local
+
+

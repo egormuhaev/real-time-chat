@@ -1,4 +1,5 @@
-import { SignInForm, SignUpForm } from "features/AuthByLogin";
+import { SignInForm } from "features/SignInByEmail";
+import { SignUpForm } from "features/SignUpByEmail";
 import styles from "./LoginPage.module.scss";
 import { useCallback, useState } from "react";
 
