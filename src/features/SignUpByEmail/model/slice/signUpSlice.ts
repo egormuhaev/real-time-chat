@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SignUpSchema } from "../types/signUpSchema";
 import { signUpByEmail } from "../services/signUpByEmail/signUpByEmail";
+import { emailValidator, passwordValidator } from "shared/helpers";
 
 const initialState: SignUpSchema = {
   email: {
@@ -29,15 +30,20 @@ export const signUpSlice = createSlice({
   reducers: {
     setEmail(state, action: PayloadAction<string>) {
       state.email.value = action.payload;
+      state.email.validation = emailValidator(action.payload);
     },
     setUsername(state, action: PayloadAction<string>) {
       state.username.value = action.payload;
+      state.username.validation = action.payload.length > 3;
     },
     setPassword(state, action: PayloadAction<string>) {
       state.password.value = action.payload;
+      state.password.validation = passwordValidator(action.payload).status;
     },
     setConfirmPassword(state, action: PayloadAction<string>) {
       state.confirmPassword.value = action.payload;
+      state.confirmPassword.validation =
+        action.payload === state.password.value;
     },
   },
   extraReducers: (builder) => {

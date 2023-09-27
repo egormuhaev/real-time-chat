@@ -7,11 +7,7 @@ import { Sidebar } from "widgets/sidebar";
 import { MdDeck } from "react-icons/md";
 
 const HomePage = () => {
-  return (
-    <div className={cn(styles.Home)}>
-      <Input label={<MdDeck />} />
-    </div>
-  );
+  return <div className={cn(styles.Home)}></div>;
 };
 
 export default withMainLayout(HomePage, {

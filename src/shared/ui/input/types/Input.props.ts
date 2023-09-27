@@ -14,4 +14,5 @@ export interface InputProps extends HTMLInputProps {
   radius?: boolean;
   label?: React.ReactNode;
   labelStyle?: LabelStyle;
+  subElement?: React.ReactNode;
 }

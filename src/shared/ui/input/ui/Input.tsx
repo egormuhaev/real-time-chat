@@ -10,18 +10,26 @@ export const Input: React.FC<InputProps> = memo(
     radius = true,
     label,
     labelStyle = "normal",
+    subElement,
     ...props
   }) => {
     return (
-      <div
-        className={cn(styles.inputWrapper, styles[size], {
-          [styles.radius]: radius,
-        })}
-      >
-        {label && (
-          <div className={cn(styles.label, styles[labelStyle])}>{label}</div>
-        )}
-        <input className={cn(styles.input, className)} type="text" {...props} />
+      <div className={styles.container}>
+        <div
+          className={cn(styles.inputWrapper, styles[size], {
+            [styles.radius]: radius,
+          })}
+        >
+          {label && (
+            <div className={cn(styles.label, styles[labelStyle])}>{label}</div>
+          )}
+          <input
+            className={cn(styles.input, className)}
+            type="text"
+            {...props}
+          />
+        </div>
+        {subElement && <div className={styles.sub}>{subElement}</div>}
       </div>
     );
   }

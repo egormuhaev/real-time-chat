@@ -1,22 +1,24 @@
 import { Button } from "shared/ui/button";
-import { Input } from "shared/ui/input";
 import styles from "./SignUpForm.module.scss";
-import { MdAlternateEmail, MdPassword } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import { memo, useCallback } from "react";
-import { BiUser } from "react-icons/bi";
 import { FormProps } from "../types/FormProps";
 import { useSelector } from "react-redux";
 import { getSignUpState } from "features/SignUpByEmail/model/selectors/getSignUpState/getSignUpState";
 import { signUpActions } from "features/SignUpByEmail/model/slice/signUpSlice";
 import { useAppDispatch } from "shared/hooks";
 import { signUpByEmail } from "features/SignUpByEmail/model/services/signUpByEmail/signUpByEmail";
+import { InputPasswordField } from "../InputPasswordField/InputPasswordField";
+import { InputConfPasswordField } from "../InputConfPasswordField/InputConfPasswordField";
+import { InputEmailField } from "../InputEmailField/InputEmailField";
+import { InputUsernameField } from "../InputUsernameField/InputUsernameField";
+import { getSignUpValidation } from "features/SignUpByEmail/model/selectors/getSignUpValidation/getSignUpValidation";
 
 export const SignUpForm: React.FC<FormProps> = memo(({ switchForm }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const { email, password, username, confirmPassword } =
-    useSelector(getSignUpState);
+  const { email, password, username } = useSelector(getSignUpState);
+  const validation = useSelector(getSignUpValidation);
 
   const onChangeInputValue = useCallback(
     (action) => {
@@ -40,37 +42,18 @@ export const SignUpForm: React.FC<FormProps> = memo(({ switchForm }) => {
   return (
     <div className={styles.form}>
       <h1 className={styles.formTitle}>{t("Регистрация")}</h1>
-      <Input
-        placeholder={t("Электронная почта")}
-        size="large"
-        value={email.value}
-        label={<MdAlternateEmail />}
-        onChange={onChangeInputValue(signUpActions.setEmail)}
+      <InputEmailField
+        onChangeInput={onChangeInputValue(signUpActions.setEmail)}
       />
-      <Input
-        placeholder={t("Имя пользователя")}
-        size="large"
-        value={username.value}
-        label={<BiUser />}
-        onChange={onChangeInputValue(signUpActions.setUsername)}
+      <InputUsernameField
+        onChangeInput={onChangeInputValue(signUpActions.setUsername)}
       />
-      <Input
-        placeholder={t("Пароль")}
-        type="password"
-        size="large"
-        value={password.value}
-        label={<MdPassword />}
-        onChange={onChangeInputValue(signUpActions.setPassword)}
+      <InputPasswordField
+        onChangeInput={onChangeInputValue(signUpActions.setPassword)}
       />
-      <Input
-        placeholder={t("Повторите пароль")}
-        type="password"
-        size="large"
-        value={confirmPassword.value}
-        onChange={onChangeInputValue(signUpActions.setConfirmPassword)}
-        label={<MdPassword />}
+      <InputConfPasswordField
+        onChangeInput={onChangeInputValue(signUpActions.setConfirmPassword)}
       />
-
       <Button
         onClick={onClickLogin}
         appearence="blue"
