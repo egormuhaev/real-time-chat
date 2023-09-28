@@ -1,4 +1,5 @@
 import { DetailedHTMLProps, InputHTMLAttributes } from "react";
+import { ValidationResolve } from "shared/helpers";
 
 type HTMLInputProps = Omit<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
@@ -15,4 +16,8 @@ export interface InputProps extends HTMLInputProps {
   label?: React.ReactNode;
   labelStyle?: LabelStyle;
   subElement?: React.ReactNode;
+}
+
+export interface InputMessageProps {
+  messages: ValidationResolve[];
 }

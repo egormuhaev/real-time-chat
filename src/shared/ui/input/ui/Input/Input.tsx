@@ -1,4 +1,4 @@
-import { InputProps } from "../types/Input.props";
+import { InputProps } from "../../types/Input.props";
 import { memo } from "react";
 import cn from "classnames";
 import styles from "./Input.module.scss";

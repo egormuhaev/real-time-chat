@@ -1,7 +1,4 @@
-import { Button } from "shared/ui/button";
-import { Input } from "shared/ui/input";
 import styles from "./SignInFrom.module.scss";
-import { MdAlternateEmail, MdPassword } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import { memo, useCallback, useReducer } from "react";
 import { FormProps } from "../types/FormProps";
@@ -10,10 +7,15 @@ import { getSignInState } from "../../model/selectors/getSignInState/getSignInSt
 import { signInActions } from "../../model/slice/signInSlice";
 import { signInByEmail } from "../../model/services/signInByEmail/signInByEmail";
 import { useAppDispatch } from "shared/hooks/useRedux/useRedux";
+import { InputEmailField } from "../InputEmailField/InputEmailField";
+import { InputPasswordField } from "../InputPasswordField/InputPasswordField";
+import { getSignInValidation } from "features/SignInByEmail/model/selectors/getSignInValidation/getSignInValidation";
+import { ActionButtonForm } from "../ActionButtonForm/ActionButtonForm";
 
 export const SignInForm: React.FC<FormProps> = memo(({ switchForm }) => {
   const dispatch = useAppDispatch();
   const { email, password, isLoading, error } = useSelector(getSignInState);
+  const validation = useSelector(getSignInValidation);
   const { t } = useTranslation();
 
   const onChangeInputValue = useCallback(
@@ -28,32 +30,22 @@ export const SignInForm: React.FC<FormProps> = memo(({ switchForm }) => {
 
   const onClickLogin = useCallback(() => {
     const response = { email: email.value, password: password.value };
-    dispatch(signInByEmail(response));
-  }, [dispatch, email, password]);
+    if (validation) {
+      dispatch(signInByEmail(response));
+    }
+  }, [dispatch, email, password, validation]);
 
   return (
     <div className={styles.form}>
       <h1 className={styles.formTitle}>{t("Авторизация")}</h1>
-      <Input
-        placeholder={t("Электронная почта")}
-        size="large"
-        label={<MdAlternateEmail />}
-        value={email.value}
-        onChange={onChangeInputValue(signInActions.setEmail)}
+      <InputEmailField
+        onChangeInput={onChangeInputValue(signInActions.setEmail)}
       />
-      <Input
-        placeholder={t("Пароль")}
-        type="password"
-        size="large"
-        label={<MdPassword />}
-        value={password.value}
-        onChange={onChangeInputValue(signInActions.setPassword)}
+      <InputPasswordField
+        onChangeInput={onChangeInputValue(signInActions.setPassword)}
       />
-
-      <Button onClick={onClickLogin} appearence="blue" className={styles.loginBtn} size="large">
-        {t("Войти")}
-      </Button>
-      <p onClick={switchForm}>
+      <ActionButtonForm className={styles.loginBtn} onClick={onClickLogin} />
+      <p className={styles.switchForm} onClick={switchForm}>
         <span>{t("Создать ")}</span>
         {t("новую учетную запись")}
       </p>

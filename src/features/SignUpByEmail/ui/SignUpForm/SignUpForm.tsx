@@ -1,4 +1,3 @@
-import { Button } from "shared/ui/button";
 import styles from "./SignUpForm.module.scss";
 import { useTranslation } from "react-i18next";
 import { memo, useCallback } from "react";
@@ -13,6 +12,7 @@ import { InputConfPasswordField } from "../InputConfPasswordField/InputConfPassw
 import { InputEmailField } from "../InputEmailField/InputEmailField";
 import { InputUsernameField } from "../InputUsernameField/InputUsernameField";
 import { getSignUpValidation } from "features/SignUpByEmail/model/selectors/getSignUpValidation/getSignUpValidation";
+import { ActionButtonForm } from "../ActionButtonForm/ActionButtonForm";
 
 export const SignUpForm: React.FC<FormProps> = memo(({ switchForm }) => {
   const { t } = useTranslation();
@@ -36,8 +36,10 @@ export const SignUpForm: React.FC<FormProps> = memo(({ switchForm }) => {
       password: password.value,
       username: username.value,
     };
-    dispatch(signUpByEmail(response));
-  }, [dispatch, email, password, username]);
+    if (validation) {
+      dispatch(signUpByEmail(response));
+    }
+  }, [dispatch, email, password, username, validation]);
 
   return (
     <div className={styles.form}>
@@ -54,15 +56,8 @@ export const SignUpForm: React.FC<FormProps> = memo(({ switchForm }) => {
       <InputConfPasswordField
         onChangeInput={onChangeInputValue(signUpActions.setConfirmPassword)}
       />
-      <Button
-        onClick={onClickLogin}
-        appearence="blue"
-        className={styles.loginBtn}
-        size="large"
-      >
-        {t("Зарегистрироваться")}
-      </Button>
-      <p onClick={switchForm}>
+      <ActionButtonForm className={styles.loginBtn} onClick={onClickLogin} />
+      <p className={styles.switchForm} onClick={switchForm}>
         {t("Уже есть аккаунт ")}
         <span>{t("войти")}</span>
       </p>

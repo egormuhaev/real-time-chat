@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Input } from "shared/ui/input";
-import { InputMessage } from "../InputMessage/InputMessage";
+import { InputMessage } from "shared/ui/input";
 import { InputFieldProps } from "../types/FormProps";
 import { MdPassword } from "react-icons/md";
 import { useSelector } from "react-redux";

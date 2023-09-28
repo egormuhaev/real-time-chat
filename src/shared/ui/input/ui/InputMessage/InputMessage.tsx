@@ -1,5 +1,5 @@
 import { memo, useMemo } from "react";
-import { InputMessageProps } from "../types/FormProps";
+import { InputMessageProps } from "../../types/Input.props";
 import styles from "./InputMessage.module.scss";
 
 export const InputMessage: React.FC<InputMessageProps> = memo(

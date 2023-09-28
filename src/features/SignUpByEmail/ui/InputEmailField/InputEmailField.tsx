@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { emailValidator } from "shared/helpers";
 import { Input } from "shared/ui/input";
-import { InputMessage } from "../InputMessage/InputMessage";
+import { InputMessage } from "shared/ui/input";
 import { InputFieldProps } from "../types/FormProps";
 import { MdAlternateEmail } from "react-icons/md";
 import { useSelector } from "react-redux";

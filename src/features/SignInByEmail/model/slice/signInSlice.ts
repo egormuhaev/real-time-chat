@@ -5,9 +5,11 @@ import { signInByEmail } from "../services/signInByEmail/signInByEmail";
 const initialState: SignInSchema = {
   email: {
     value: "",
+    validation: false,
   },
   password: {
     value: "",
+    validation: false,
   },
   isLoading: false,
   error: undefined,
@@ -19,10 +21,12 @@ export const signInSlice = createSlice({
   reducers: {
     setPassword(state, actions: PayloadAction<string>) {
       state.password.value = actions.payload;
+      state.password.validation = actions.payload.length > 0;
     },
 
     setEmail(state, actions: PayloadAction<string>) {
       state.email.value = actions.payload;
+      state.email.validation = actions.payload.length > 0;
     },
   },
   extraReducers: (builder) => {
