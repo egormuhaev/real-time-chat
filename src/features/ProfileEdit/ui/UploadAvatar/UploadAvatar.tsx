@@ -5,7 +5,7 @@ import { useAppDispatch } from "shared/hooks";
 import styles from "./UploadAvatar.module.scss";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { Button } from "shared/ui/button";
-import { AvatarIcon } from "../AvatarIcon/AvatarIcon";
+import { AvatarIcon } from "shared/ui/avatar";
 import { memo, useCallback } from "react";
 
 export const UploadAvatar = memo(() => {
@@ -23,7 +23,13 @@ export const UploadAvatar = memo(() => {
   return (
     <div className={styles.UploadAvatarContainer}>
       <div className={styles.UploadAvatar}>
-        <AvatarIcon isLoading={isLoadingAvatar} avatar={avatar} />
+        <AvatarIcon
+          isLoading={isLoadingAvatar}
+          avatar={
+            avatar &&
+            `https://cbfnsxrpyjrgkdbxhunm.supabase.co/storage/v1/object/public/avatars/${avatar}`
+          }
+        />
         <div className={styles.add}>
           <AiOutlineCloudUpload />
           <input
