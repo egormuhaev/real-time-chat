@@ -45,20 +45,22 @@ export const signUpSlice = createSlice({
       state.confirmPassword.validation =
         action.payload === state.password.value;
     },
+    resetError(state) {
+      state.error = undefined;
+    },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(signUpByEmail.fulfilled, (state, action) => {
-        state.isLoading = false;
-      })
-      .addCase(signUpByEmail.pending, (state) => {
-        state.isLoading = true;
-        state.error = undefined;
-      })
-      .addCase(signUpByEmail.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+  extraReducers: {
+    [signUpByEmail.fulfilled.type]: (state, action) => {
+      state.isLoading = false;
+    },
+    [signUpByEmail.pending.type]: (state) => {
+      state.isLoading = true;
+      state.error = undefined;
+    },
+    [signUpByEmail.rejected.type]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 

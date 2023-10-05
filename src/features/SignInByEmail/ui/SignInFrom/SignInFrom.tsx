@@ -1,6 +1,6 @@
 import styles from "./SignInFrom.module.scss";
 import { useTranslation } from "react-i18next";
-import { memo, useCallback, useReducer } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { FormProps } from "../types/FormProps";
 import { useSelector } from "react-redux";
 import { getSignInState } from "../../model/selectors/getSignInState/getSignInState";
@@ -11,10 +11,12 @@ import { InputEmailField } from "../InputEmailField/InputEmailField";
 import { InputPasswordField } from "../InputPasswordField/InputPasswordField";
 import { getSignInValidation } from "features/SignInByEmail/model/selectors/getSignInValidation/getSignInValidation";
 import { ActionButtonForm } from "../ActionButtonForm/ActionButtonForm";
+import { Error } from "shared/ui/error/ui/Error/Error";
+import { supabase } from "shared/config/supabase";
 
 export const SignInForm: React.FC<FormProps> = memo(({ switchForm }) => {
   const dispatch = useAppDispatch();
-  const { email, password, isLoading, error } = useSelector(getSignInState);
+  const { email, password, error } = useSelector(getSignInState);
   const validation = useSelector(getSignInValidation);
   const { t } = useTranslation();
 
@@ -28,12 +30,27 @@ export const SignInForm: React.FC<FormProps> = memo(({ switchForm }) => {
     [dispatch]
   );
 
-  const onClickLogin = useCallback(() => {
+  const onClickLogin = useCallback(async () => {
     const response = { email: email.value, password: password.value };
+    const { data, error } = await supabase.auth.signInWithPassword(response);
     if (validation) {
       dispatch(signInByEmail(response));
     }
   }, [dispatch, email, password, validation]);
+
+  const onCloseLoginMessage = useCallback(() => {
+    if (error) {
+      dispatch(signInActions.resetError());
+    }
+  }, [dispatch, error]);
+
+  const errorMessage = useMemo(
+    () =>
+      error && (
+        <Error title="Ошибка" describe={error} onClose={onCloseLoginMessage} />
+      ),
+    [error]
+  );
 
   return (
     <div className={styles.form}>
@@ -44,11 +61,14 @@ export const SignInForm: React.FC<FormProps> = memo(({ switchForm }) => {
       <InputPasswordField
         onChangeInput={onChangeInputValue(signInActions.setPassword)}
       />
-      <ActionButtonForm className={styles.loginBtn} onClick={onClickLogin} />
-      <p className={styles.switchForm} onClick={switchForm}>
-        <span>{t("Создать ")}</span>
-        {t("новую учетную запись")}
-      </p>
+      {errorMessage}
+      <div className={styles.actionContainer}>
+        <ActionButtonForm className={styles.loginBtn} onClick={onClickLogin} />
+        <p className={styles.switchForm} onClick={switchForm}>
+          <span>{t("Создать ")}</span>
+          {t("новую учетную запись")}
+        </p>
+      </div>
     </div>
   );
 });

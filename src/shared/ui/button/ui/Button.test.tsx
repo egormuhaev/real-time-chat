@@ -10,6 +10,5 @@ describe("Button", () => {
   test("Button have size class small", () => {
     render(<Button size="small">Test</Button>);
     expect(screen.getByText("Test")).toHaveClass("small");
-    screen.debug();
   });
 });

@@ -34,7 +34,7 @@
 
 .loginBtn {
     margin-top: auto;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 800px) {
@@ -61,4 +61,15 @@
     cursor: pointer;
     margin-top: auto;
     margin-bottom: 0px;
+}
+
+.actionContainer {
+
+    margin-top: auto;
+    margin-bottom: 0px;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
 }

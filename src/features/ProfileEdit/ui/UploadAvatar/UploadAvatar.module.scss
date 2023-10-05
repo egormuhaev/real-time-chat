@@ -1,0 +1,81 @@
+.UploadAvatarContainer {
+    height: auto;
+    width: 100%;
+
+    gap: 50px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.UploadAvatar {
+    height: 150px;
+    width: 150px;
+
+    border-radius: 100px;
+
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--bg-ui-secondary-color);
+
+    background-position:center center;
+    background-size:cover;
+
+}
+
+img {
+    display: block;
+
+    max-height: 100%;
+    max-width: 150px;
+
+    border-radius: 100px;
+
+    object-fit:cover;
+}
+
+
+.add {
+    cursor: pointer;
+    position: relative;
+    position: absolute;
+
+    border-radius: 50px;
+
+    height: 40px;
+    width: 40px;
+
+    background-color: var(--blue-color);
+
+    position: absolute;
+
+    bottom: 0px;
+    right: 0px;
+    padding: 3px;
+    box-sizing: border-box;
+
+    svg {
+        fill: white;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+
+

@@ -1,0 +1,51 @@
+.Error {
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    gap: 20px;
+
+    height: auto;
+    width: 100%;
+
+    border-radius: var(--border-radius-defauil);
+    background-color: var(--error-color);
+
+    box-sizing: border-box;
+    padding: 20px;
+
+    color: #fff;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.describe {
+    font-size: 13px;
+}
+
+.close {
+    cursor: pointer;
+
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    height: 20px;
+    width: 20px;
+
+    svg {
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+        fill: white;
+    }
+
+}

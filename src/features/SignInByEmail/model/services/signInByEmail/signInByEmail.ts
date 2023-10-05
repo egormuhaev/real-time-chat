@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { userActions } from "entities/User";
 import { AuthData } from "entities/User";
-import supabase from "shared/config/supabase/config/supabase";
+import { supabase } from "shared/config/supabase";
 
 interface FetchSignInByEmailProps {
   email: string;
@@ -14,15 +14,16 @@ export const signInByEmail = createAsyncThunk<
   { rejectValue: string }
 >("signIn/signInByEmail", async (authData, thunkAPI) => {
   try {
+    console.log(authData);
     const { data, error } = await supabase.auth.signInWithPassword(authData);
 
-    if (error) throw new Error(error.message);
+    if (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
 
     thunkAPI.dispatch(userActions.setAuthData(data));
-    console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
-    thunkAPI.rejectWithValue("Ошибка");
+    return thunkAPI.rejectWithValue(error);
   }
 });

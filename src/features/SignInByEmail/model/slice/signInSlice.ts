@@ -28,20 +28,23 @@ export const signInSlice = createSlice({
       state.email.value = actions.payload;
       state.email.validation = actions.payload.length > 0;
     },
+
+    resetError(state) {
+      state.error = undefined;
+    },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(signInByEmail.fulfilled, (state, action) => {
-        state.isLoading = false;
-      })
-      .addCase(signInByEmail.pending, (state) => {
-        state.isLoading = true;
-        state.error = undefined;
-      })
-      .addCase(signInByEmail.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+  extraReducers: {
+    [signInByEmail.fulfilled.type]: (state, action) => {
+      state.isLoading = false;
+    },
+    [signInByEmail.pending.type]: (state) => {
+      state.isLoading = true;
+      state.error = undefined;
+    },
+    [signInByEmail.rejected.type]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import supabase from "shared/config/supabase/config/supabase";
+import { supabase } from "shared/config/supabase";
 import { AuthData } from "entities/User/model/types/userSchema";
 import { userActions } from "entities/User/model/slice/userSlice";
 
@@ -24,13 +24,14 @@ export const signUpByEmail = createAsyncThunk<
         },
       },
     });
+
     if (error) {
-      throw new Error(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
+
     thunkAPI.dispatch(userActions.setAuthData(data));
-    console.log(data);
     return data;
   } catch (error) {
-    thunkAPI.rejectWithValue(error);
+    return thunkAPI.rejectWithValue(error);
   }
 });

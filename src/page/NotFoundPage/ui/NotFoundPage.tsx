@@ -4,10 +4,6 @@ import cn from "classnames";
 import { Button } from "shared/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { routerConfig } from "shared/config/routerConfig/routerConfig";
-import { withMainLayout } from "shared/layout/main";
-import { Sidebar } from "widgets/sidebar";
-import { Header } from "widgets/header";
-Header;
 
 const NotFoundPage = () => {
   const { t } = useTranslation();
@@ -20,7 +16,10 @@ const NotFoundPage = () => {
 
         <p>URL: {location.pathname}</p>
 
-        <Link className={styles.backBtn} to={routerConfig.home.path}>
+        <Link
+          className={styles.backBtn}
+          to={routerConfig.privateRoute.home.path}
+        >
           <Button size="large">{t("Вернутся на главную страницу")}</Button>
         </Link>
       </div>

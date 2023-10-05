@@ -14,14 +14,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, ...props }) => {
       <SidebarNavItem
         icon={<MdInventory />}
         title="Главная"
-        url={routerConfig.home.path}
-        active={routerConfig.home.path === location.pathname}
+        url={routerConfig.privateRoute.home.path}
+        active={routerConfig.privateRoute.home.path === location.pathname}
       />
       <SidebarNavItem
         icon={<MdInfo />}
         title="О сайте"
-        url={routerConfig.about.path}
-        active={routerConfig.about.path === location.pathname}
+        url={routerConfig.privateRoute.about.path}
+        active={routerConfig.privateRoute.about.path === location.pathname}
+      />
+      <SidebarNavItem
+        icon={<MdInfo />}
+        title="Profile"
+        url={routerConfig.privateRoute.profile.path}
+        active={routerConfig.privateRoute.profile.path === location.pathname}
       />
     </div>
   );

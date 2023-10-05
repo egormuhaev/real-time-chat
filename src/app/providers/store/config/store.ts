@@ -35,6 +35,9 @@ export const createReduxStore = (initialState?: StateSchema) => {
   });
 };
 
+export const store = createReduxStore();
+export const persister = persistStore(store);
+
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof createReduxStore>;
 export type AppDispatch = AppStore["dispatch"];
