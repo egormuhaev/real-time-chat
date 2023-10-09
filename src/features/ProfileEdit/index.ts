@@ -1,1 +1,1 @@
-export { ProfileEditLazy as ProfileEdit } from "./ui/ProfileEdit/ProfileEdit.lazy";
+export { ProfileEditLazy as ProfileEdit } from "./ui/components/ProfileEdit.lazy";

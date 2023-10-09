@@ -1,5 +1,5 @@
 import styles from "./AboutPage.module.scss";
-import { withMainLayout } from "shared/layout/main";
+import { withMainLayout } from "shared/ui/layout";
 import { Header } from "widgets/header";
 import { Sidebar } from "widgets/sidebar";
 

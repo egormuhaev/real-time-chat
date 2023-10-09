@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SignUpSchema } from "../types/signUpSchema";
 import { signUpByEmail } from "../services/signUpByEmail/signUpByEmail";
-import { emailValidator, passwordValidator } from "shared/helpers";
+import { emailValidator, passwordValidator } from "shared/lib/helpers";
 
 const initialState: SignUpSchema = {
   email: {

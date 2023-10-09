@@ -1,0 +1,33 @@
+.layout {
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: var(--sidebar-width) calc(100vw - var(--sidebar-width));
+    grid-template-rows: var(--header-height) calc(100vh - var(--header-height));
+    grid-template-areas: "sidebar header" "sidebar content";
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.header {
+    grid-area: header;
+}
+
+.content {
+    grid-area: content;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .layout {
+        --recalc-adaptive-height: calc(--header-height / 2);
+
+        grid-template-columns: var(--slim-sidebar-width) calc(100vw - var(--slim-sidebar-width));
+        grid-template-rows: var(--recalc-adaptive-height) calc(100vh - var(--recalc-adaptive-height));
+    }
+
+    
+}

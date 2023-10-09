@@ -5,3 +5,5 @@ export { routerConfig } from "./routerConfig/routerConfig";
 export { supabase } from "./supabase";
 
 export { i18n };
+
+

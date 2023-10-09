@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, InputHTMLAttributes } from "react";
-import { ValidationResolve } from "shared/helpers";
+import { ValidationResolve } from "shared/lib/helpers";
 
 type HTMLInputProps = Omit<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,

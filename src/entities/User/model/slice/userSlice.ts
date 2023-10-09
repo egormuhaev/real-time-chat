@@ -12,6 +12,10 @@ export const userSlice = createSlice({
     setAuthData: (state, action: PayloadAction<AuthData>) => {
       state.authData = action.payload;
     },
+
+    logout: (state) => {
+      state.authData = null;
+    },
   },
 });
 

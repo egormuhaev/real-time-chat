@@ -5,9 +5,18 @@ import { SidebarNavItem } from "../SidebarNavItem/SidebarNavItem";
 import { routerConfig } from "shared/config/routerConfig/routerConfig";
 import { MdInventory, MdInfo } from "react-icons/md";
 import { useLocation } from "react-router";
+import { ProfileCard } from "entities/Profile";
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { userActions } from "entities/User";
 
 export const Sidebar: React.FC<SidebarProps> = ({ className, ...props }) => {
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  const onClickLogout = useCallback(() => {
+    dispatch(userActions.logout());
+  }, [dispatch]);
 
   return (
     <div id="sidebar" className={cn(className, styles.Sidebar)} {...props}>
@@ -29,6 +38,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, ...props }) => {
         url={routerConfig.privateRoute.profile.path}
         active={routerConfig.privateRoute.profile.path === location.pathname}
       />
+      <div className={styles.otherContainer}>
+        <ProfileCard style={{ paddingTop: 25 }} onClickLogout={onClickLogout} />
+      </div>
     </div>
   );
 };
