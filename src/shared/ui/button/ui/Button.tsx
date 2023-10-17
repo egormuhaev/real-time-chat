@@ -16,6 +16,7 @@ export const Button: React.FC<ButtonProps> = memo(
       <button
         className={cn(className, styles.Button, styles[size], {
           [styles.blue]: appearence === "blue",
+          [styles.red]: appearence === "red",
         })}
         {...props}
       >

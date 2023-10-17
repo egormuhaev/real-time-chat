@@ -1,0 +1,62 @@
+.FriendsListItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    box-sizing: border-box;
+    padding: 30px;
+
+    border-radius: 6px;
+
+    gap: 30px;
+
+    height: 100px;
+    width: 100%;
+
+    transition: all 0.4s;
+}
+
+.FriendsListItem:hover {
+    background-color: var(--bg-ui-secondary-color-opacity);
+
+    .btn.options {
+        opacity: 1;
+    }
+}
+
+.container {
+    height: 100%;
+    width: auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.openMenu {
+    border: none;
+    background: none;
+
+    svg {
+        height: 17px;
+        width: 17px;
+    }
+}
+
+
+

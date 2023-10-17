@@ -21,4 +21,4 @@ export const upadateProfileData = createAsyncThunk<
   } catch (error) {
     thunkAPI.rejectWithValue(error);
   }
-});
+}); 

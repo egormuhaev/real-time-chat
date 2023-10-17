@@ -1,0 +1,49 @@
+.ConfirmPage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--primary-color);
+
+    height: 100%;
+    width: 100%;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: var(--border-radius-defauil);
+
+    width: 600px;
+    height: 400px;
+
+    background-color: var(--bg-color);
+
+    gap: 30px;
+
+    padding: 40px;
+    box-sizing: border-box;
+
+    svg {
+        height: 80px;
+        width: 80px;
+
+        fill: var(--success-color);
+    }
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--success-color);
+
+}
+
+.btn {
+    margin-top: auto;
+    margin-bottom: 0px;
+}

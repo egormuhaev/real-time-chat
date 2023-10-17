@@ -6,3 +6,18 @@ export interface ProfilesSB {
   last_name: string;
   user_id: string;
 }
+
+export interface FriendsList {
+  id: number;
+  created_at: string;
+  person: string;
+  friend: string;
+}
+
+export interface FriendsRequest {
+  created_at: string;
+  from: string;
+  id: number;
+  status: boolean;
+  to: string;
+}

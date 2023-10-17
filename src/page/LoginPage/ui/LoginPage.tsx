@@ -1,10 +1,15 @@
-import { SignInForm } from "features/SignInByEmail";
-import { SignUpForm } from "features/SignUpByEmail";
+import { SignInForm } from "widgets/login";
+import { SignUpForm } from "widgets/login";
 import styles from "./LoginPage.module.scss";
 import { useCallback, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const LoginPage = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const location = useLocation();
+
+  const [isAuth, setIsAuth] = useState(
+    location.state?.login === "signIn" ? true : false
+  );
 
   const switchForm = useCallback(() => {
     setIsAuth(!isAuth);

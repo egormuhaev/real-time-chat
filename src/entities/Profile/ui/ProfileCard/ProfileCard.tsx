@@ -15,6 +15,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(
     return (
       <div className={cn(styles.ProfileCard, className)} {...props}>
         <AvatarIcon
+          className={styles.avatar}
           avatar={
             avatar &&
             `https://cbfnsxrpyjrgkdbxhunm.supabase.co/storage/v1/object/public/avatars/${avatar}`

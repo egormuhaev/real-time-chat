@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 export type ButtonSize = "small" | "medium" | "large" | "string";
-export type ButtonAppearence = "default" | "blue";
+export type ButtonAppearence = "default" | "blue" | "red";
 
 export interface ButtonProps
   extends DetailedHTMLProps<

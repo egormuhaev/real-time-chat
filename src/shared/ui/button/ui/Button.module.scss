@@ -20,6 +20,10 @@
 
     padding: 10px;
     box-sizing: border-box;
+
+    svg {
+        fill: white;
+    }
 }
 
 .small {
@@ -40,6 +44,11 @@
 .blue {
     border: none;
     background-color: var(--blue-color);
+}
+
+.red {
+    border: none;
+    background-color: var(--warning-color);
 }
 
 .radius-full {

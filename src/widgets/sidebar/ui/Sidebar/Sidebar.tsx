@@ -9,6 +9,7 @@ import { ProfileCard } from "entities/Profile";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { userActions } from "entities/User";
+import { FaUserFriends } from "react-icons/fa";
 
 export const Sidebar: React.FC<SidebarProps> = ({ className, ...props }) => {
   const location = useLocation();
@@ -34,9 +35,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, ...props }) => {
       />
       <SidebarNavItem
         icon={<MdInfo />}
-        title="Profile"
+        title="Профиль"
         url={routerConfig.privateRoute.profile.path}
         active={routerConfig.privateRoute.profile.path === location.pathname}
+      />
+      <SidebarNavItem
+        icon={<FaUserFriends />}
+        title="Друзья"
+        url={routerConfig.privateRoute.friends.path}
+        active={routerConfig.privateRoute.friends.path === location.pathname}
       />
       <div className={styles.otherContainer}>
         <ProfileCard style={{ paddingTop: 25 }} onClickLogout={onClickLogout} />

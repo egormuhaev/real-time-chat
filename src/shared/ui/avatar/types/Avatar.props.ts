@@ -1,3 +1,5 @@
+import { DetailedHTMLProps, HTMLAttributes } from "react";
+
 type Enumerate<
   N extends number,
   Acc extends number[] = []
@@ -16,7 +18,8 @@ export type AvatarIconeSize = SizeDiapazone | "full";
 
 export type AvatarIconsBorder = "green" | "red" | "blue";
 
-export interface AvatarIconeProps {
+export interface AvatarIconeProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   isLoading?: boolean;
   avatar?: string;
   size?: AvatarIconeSize;
