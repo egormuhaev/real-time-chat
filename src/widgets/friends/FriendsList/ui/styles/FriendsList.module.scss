@@ -1,13 +1,22 @@
 .FriendsList {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-
+    display: grid;
+    grid-template-columns: 1f;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas: 'header' 'friendsList';
+    gap: 20px;
+  
     height: 100%;
     width: 100%;
 
     box-sizing: border-box;
     padding: 20px;
 }
+
+.header {
+    grid-area: header;
+}
+
+.friends {
+    grid-area: friendsList;
+}
+

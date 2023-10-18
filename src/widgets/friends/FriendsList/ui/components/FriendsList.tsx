@@ -2,10 +2,12 @@ import { memo, useMemo } from "react";
 import styles from "../styles/FriendsList.module.scss";
 import { FriendsListProps } from "../types/FriendsList.props";
 import { FriendsListItem } from "./FriendsListItem";
-import { useFriendsList } from "features/friends/lib/useFriendsList/useFriendsList";
+import { useFriendsList } from "features/friends/lib/useFriendsList/hook/useFriendsList";
+import { FriendListHeader } from "./FriendListHeader";
 
 const FriendsList: React.FC<FriendsListProps> = memo(({}) => {
-  const { friendProfiles } = useFriendsList();
+  const { friendProfiles, search, onSearchInput, onSort, sortOptions } =
+    useFriendsList();
 
   const friends = useMemo(
     () =>
@@ -20,7 +22,19 @@ const FriendsList: React.FC<FriendsListProps> = memo(({}) => {
     [friendProfiles]
   );
 
-  return <div className={styles.FriendsList}>{friends}</div>;
+  return (
+    <div className={styles.FriendsList}>
+      <div className={styles.header}>
+        <FriendListHeader
+          onSort={onSort}
+          sortOptions={sortOptions}
+          search={search}
+          onInputSeach={onSearchInput}
+        />
+      </div>
+      <div className={styles.friends}>{friends}</div>
+    </div>
+  );
 });
 
 export default FriendsList;

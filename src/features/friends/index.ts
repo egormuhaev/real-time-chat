@@ -1,3 +1,5 @@
+export { useFriendsList } from "./lib/useFriendsList/hook/useFriendsList";
+
 export {
   friendsListActions,
   friendsListReducer,

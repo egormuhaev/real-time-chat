@@ -34,12 +34,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, ...props }) => {
         active={routerConfig.privateRoute.about.path === location.pathname}
       />
       <SidebarNavItem
-        icon={<MdInfo />}
-        title="Профиль"
-        url={routerConfig.privateRoute.profile.path}
-        active={routerConfig.privateRoute.profile.path === location.pathname}
-      />
-      <SidebarNavItem
         icon={<FaUserFriends />}
         title="Друзья"
         url={routerConfig.privateRoute.friends.path}

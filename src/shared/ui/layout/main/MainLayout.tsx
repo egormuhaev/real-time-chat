@@ -1,7 +1,5 @@
 import styles from "./MainLayout.module.scss";
 import cn from "classnames";
-import { Header } from "widgets/header";
-import { Sidebar } from "widgets/sidebar";
 
 export interface LayoutComponents {
   sidebar?: React.ReactNode;
